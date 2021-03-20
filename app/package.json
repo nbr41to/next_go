@@ -1,5 +1,5 @@
 {
-  "name": "react-maker",
+  "name": "next-go",
   "version": "1.0.0",
   "scripts": {
     "dev": "next",
@@ -7,18 +7,18 @@
     "start": "next start"
   },
   "dependencies": {
-    "autoprefixer": "^10.1.0",
+    "autoprefixer": "^10.2.5",
     "next": "latest",
-    "postcss": "^8.2.1",
-    "react": "^16.12.0",
-    "react-dom": "^16.12.0",
-    "tailwindcss": "^2.0.2"
+    "postcss": "^8.2.8",
+    "react": "^17.0.1",
+    "react-dom": "^17.0.1",
+    "tailwindcss": "^2.0.4"
   },
   "devDependencies": {
-    "@types/node": "^12.12.21",
-    "@types/react": "^16.9.16",
-    "@types/react-dom": "^16.9.4",
-    "typescript": "4.0"
+    "@types/node": "^14.14.35",
+    "@types/react": "^17.0.3",
+    "@types/react-dom": "^17.0.2",
+    "typescript": "4.2"
   },
   "license": "MIT"
 }

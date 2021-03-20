@@ -1,0 +1,48 @@
+version: "3.8" # docker-composeのバージョン
+
+services: # 各コンテナの情報
+  db:
+    image: postgres
+    ports:
+      - "5555:5432"
+    build: # Dockerfileのディレクトリパス
+      context: .
+      dockerfile: ./docker/postgres/Dockerfile
+    environment: # 環境設定
+      POSTGRES_USER: root
+      POSTGRES_PASSWORD: root
+    volumes:
+      - ./db/postgres/init.d:/docker-entrypoint-initdb.d
+      - ./db/postgres/pgdata:/var/lib/postgresql/data
+    restart: always
+    user: root
+
+  golang:
+    build:
+      context: .
+      dockerfile: ./docker/golang/Dockerfile
+    depends_on: # postgresのビルド後にビルドする
+      - db
+    environment:
+      - DB_USER=root
+      - DB_PASSWORD=root
+      - DB_NAME=next_go
+    volumes: # フォルダ共有(OS:コンテナ)
+      - ./server:/go/src
+    ports:
+      - "8080:8080"
+    tty: true # コンテナの永続化
+    restart: always
+
+  pgadmin:
+    image: dpage/pgadmin4:4.2
+    depends_on:
+      - db
+    ports:
+      - "80:80"
+    environment:
+      PGADMIN_DEFAULT_EMAIL: root # pgAdmin Address
+      PGADMIN_DEFAULT_PASSWORD: root # pgAdmin Password
+    volumes:
+      - ./db/pgadmin:/var/lib/pgadmin
+    restart: always

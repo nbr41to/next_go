@@ -87,7 +87,7 @@ export default function Index() {
   };
 
   return (
-    <div>
+    <div className="m-[100px]">
       <form onSubmit={handleSubmit}>
         <input
           type="text"

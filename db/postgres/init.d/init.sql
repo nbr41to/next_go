@@ -1,4 +1,5 @@
 CREATE TABLE IF NOT EXISTS todos(
     id  SERIAL PRIMARY KEY,
-    text VARCHAR(50)
+    text TEXT,
+    created TIMESTAMP
 );

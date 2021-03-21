@@ -51,30 +51,19 @@ func handler(w http.ResponseWriter, r *http.Request) {
 	switch r.URL.Path {
 	case "/create":
 		create(f.Text)
-		todo := read()
-		js, err := json.Marshal(todo)
-		checkErr(err)
-		w.Write(js)
 	case "/read":
-		todo := read()
-		js, err := json.Marshal(todo)
-		checkErr(err)
-		w.Write(js)
+		fmt.Println("Read")
 	case "/update":
 		update(f.ID, f.Text)
-		todo := read()
-		js, err := json.Marshal(todo)
-		checkErr(err)
-		w.Write(js)
 	case "/delete":
 		delete(f.ID)
-		todo := read()
-		js, err := json.Marshal(todo)
-		checkErr(err)
-		w.Write(js)
 	default:
 		fmt.Println("Noting")
 	}
+	todo := read()
+	js, err := json.Marshal(todo)
+	checkErr(err)
+	w.Write(js)
 }
 
 func create(text string) {

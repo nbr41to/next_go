@@ -4,7 +4,12 @@
   "scripts": {
     "dev": "next",
     "build": "next build",
-    "start": "next start"
+    "start": "next start",
+    "docker-up": "cd .. & docker-compose up",
+    "docker-build": "cd .. & docker-compose build",
+    "docker-go": "cd .. & docker-compose exec golang sh",
+    "docker-db": "cd .. & docker-compose exec db sh",
+    "docker-stop": "cd .. & docker-compose stop"
   },
   "dependencies": {
     "autoprefixer": "^10.2.5",

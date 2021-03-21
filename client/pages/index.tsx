@@ -88,44 +88,60 @@ export default function Index() {
 
   return (
     <div className="m-[100px]">
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit} className="mb-4">
         <input
           type="text"
           ref={ref}
           placeholder="やることを追加"
-          className="border-gray-500 border rounded-sm mr-4"
+          className="input"
         />
         <button
           type="submit"
-          className="text-white bg-gray-500 rounded-md px-4">
+          className="text-white bg-gray-500 rounded-md px-4 h-10"
+        >
           追加
         </button>
       </form>
       <ul>
         {todos &&
           todos.map(({ ID, Text }) => (
-            <li key={ID}>
+            <li key={ID} className="border border-gray-500 rounded-md p-4 mb-4">
               {editId === ID ? (
                 <>
                   <input
                     type="text"
-                    className="border-gray-500 border rounded-sm mr-4"
+                    className="input mb-2"
                     ref={editRef}
                     defaultValue={Text}
                   />
-                  <button onClick={() => setEditId(undefined)}>
+                  <button
+                    onClick={() => setEditId(undefined)}
+                    className="button mr-2"
+                  >
                     キャンセル
                   </button>
                   <button
-                    onClick={() => handleUpdate(ID, editRef.current!.value)}>
+                    onClick={() => handleUpdate(ID, editRef.current!.value)}
+                    className="button"
+                  >
                     保存
                   </button>
                 </>
               ) : (
                 <>
-                  <p>{Text}</p>
-                  <button onClick={() => handleDelete(ID)}>削除</button>
-                  <button onClick={() => setEditId(ID)}>編集</button>
+                  <p className="font-bold h-10 mb-2">{Text}</p>
+                  <button
+                    onClick={() => handleDelete(ID)}
+                    className="default-button mr-2"
+                  >
+                    削除
+                  </button>
+                  <button
+                    onClick={() => setEditId(ID)}
+                    className="default-button"
+                  >
+                    編集
+                  </button>
                 </>
               )}
             </li>

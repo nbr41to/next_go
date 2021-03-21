@@ -110,7 +110,7 @@ export default function Index() {
                 <>
                   <input
                     type="text"
-                    className="input mb-2"
+                    className="input mb-2 block"
                     ref={editRef}
                     defaultValue={Text}
                   />
